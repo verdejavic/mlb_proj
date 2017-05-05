@@ -6,7 +6,7 @@ bsObj = BeautifulSoup(html, "html.parser")
 f = open("mlb_urls.txt", 'w')
 
 def get_next_page(html, bsObj):
-    for i in range (1, 3):
+    for i in range (1, 123):
         new_url = "http://www.foxsports.com/mlb/players?teamId=0&season=2017&position=0&page=" + str(i) + "&country=0&grouping=0&weightclass=0"
         html = urlopen(new_url)
         bsObj = BeautifulSoup(html, "html.parser")
