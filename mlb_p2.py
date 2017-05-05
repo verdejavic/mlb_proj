@@ -10,9 +10,9 @@ def get_next_page(html, bsObj):
         new_url = "http://www.foxsports.com/mlb/players?teamId=0&season=2017&position=0&page=" + str(i) + "&country=0&grouping=0&weightclass=0"
         html = urlopen(new_url)
         bsObj = BeautifulSoup(html, "html.parser")
-        get_player_pages(bsObj)
+        get_player_pages(html, bsObj)
 
-def get_player_pages(bsObj):
+def get_player_pages(html, bsObj):
     players = bsObj.findAll("a", {"class": "wisbb_fullPlayer"})
     for player in players:
         if 'href' in player.attrs:
@@ -21,5 +21,5 @@ def get_player_pages(bsObj):
             f.write(str(new_url) + "\n")
     get_next_page(html, bsObj)
 
-get_player_pages(bsObj)
+get_next_page(html, bsObj)
 f.close()
